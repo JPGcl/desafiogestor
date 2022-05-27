@@ -3,13 +3,12 @@ class GestorsController < ApplicationController
 
   # GET /gestors or /gestors.json
   def index
-    if params[:search].present?
-      @gestors = Gestor.where("estado =?",params[:search])
-    else
+    puts params[:search]
+    if !params[:search].present? || params[:search] == "*" 
       @gestors = Gestor.all
+    else
+      @gestors = Gestor.where("estado = ?",params[:search])
     end
-    
-
   end
 
   # GET /gestors/1 or /gestors/1.json

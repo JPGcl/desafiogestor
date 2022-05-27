@@ -1,10 +1,4 @@
-<h1>Editing gestor</h1>
-
-<%= render "form", gestor: @gestor %>
-
+<h2>Editando el proyecto : <i><%= @gestor.nombre%></i></h2>
 <br>
 
-<div>
-  <%= link_to "Show this gestor", @gestor %> |
-  <%= link_to "Back to gestors", gestors_path %>
-</div>
+<%= render "form", gestor: @gestor %>

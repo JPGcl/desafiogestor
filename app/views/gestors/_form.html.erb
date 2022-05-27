@@ -1,8 +1,7 @@
 <%= form_with(model: gestor) do |form| %>
   <% if gestor.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(gestor.errors.count, "error") %> prohibited this gestor from being saved:</h2>
-
+      <h2><%= pluralize(gestor.errors.count, "error") %>, no permiten que se guarde el proyecto.</h2>
       <ul>
         <% gestor.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -12,34 +11,38 @@
   <% end %>
 
   <div>
-    <%= form.label :nombre, style: "display: block" %>
+    <%= form.label "Proyecto :", style: "display: inline-block" %>
     <%= form.text_field :nombre %>
   </div>
-  
-    <div>
-    <%= form.label :descripcion, style: "display: block" %>
+
+  <div>
+    <%= form.label "Descripción :", style: "display: block" %>
     <%= form.text_area :descripcion %>
   </div>
 
   <div>
-    <%= form.label :fechacom, style: "display: block" %>
+    <%= form.label "Fecha de inicio :", style: "display: inline-block" %>
     <%= form.text_field :fechacom %>
-  </div>
-
-  <div>
-    <%= form.label :fechater, style: "display: block" %>
+    <%= form.label "Fecha de término :", style: "display: inline-block" %>
     <%= form.text_field :fechater %>
   </div>
 
   <div>
-    <%= form.label :estado, style: "display: block" %>
-    <% select_list = [ 'Propuesto', 'En Progreso', 'Terminado' ] %>
+    <%= form.label "Estado :", style: "display: inline-block" %>
+      <% select_list = [ 'Propuesto', 'En Progreso', 'Terminado' ] %>
     <%= form.select :estado, select_list, selected:'Propuesto' %>
-
+    <br>
+  </div>
+  <br>
+  <br>
+  <div class="inline">
+    <%= link_to gestors_path, style: "text-decoration: none; display: inline-block" do %>
+      <i class="fa-solid fa-reply text-info"></i>&nbsp;
+    <% end %>
+    <button type="submit" class="btn">
+      <i class="fa-solid fa-floppy-disk"></i>&nbsp;
+    </button>
 
   </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>

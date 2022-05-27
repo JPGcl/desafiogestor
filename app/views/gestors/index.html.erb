@@ -1,58 +1,85 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Gestors</h1>
-
-<nav class="navbar navbar-light bg-light justify-content-between">
- <a class="navbar-brand">Navbar</a>
- <form class="form-inline">
-
- <select class="form-select" name="search" id="">
-   <option value="">Todos</option>
-   <option value="Propuesto">Propuesto</option>
-   <option value="En Progreso">En Progreso</option>
-   <option value="Terminado">Terminado</option>
- </select>
-
- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
- </form>
-</nav>
-
-<% if @gestors.count > 0 %>
-
-<div id="gestors">
-  <table class="table">
-    <thead>
-      <tr>
-      <th>Nombre</th>
-      <th>Descripción</th>
-      <th>Fecha Comienzo</th>
-      <th>Fecha Término</th>
-      <th>Estado</th>
-      <th>Ver</th>
-      </tr>
-    </thead>
-
-  <% @gestors.each do |gestor| %>
-    <tr>
-      <td><%= gestor.nombre %></td>
-      <td><%= gestor.descripcion %></td>
-      <td><%= gestor.fechacom %></td>
-      <td><%= gestor.fechater %></td>
-      <td><%= gestor.estado %></td>
-      <td><%= link_to "Show this gestor", gestor %></td>
-    </tr>
-  <% end %>
-
-  </table>
+<h2>Gestor de proyectos</h2>
+<div class="input-group mb-3">
+   <form class="form-inline">
+    <div class="input-group-text p-0">
+        <select name="search" class="form-select form-select-lg shadow-none bg-light border-0" onchange="this.form.submit()">
+            <option selected disabled hidden>Filtrar estado</option>
+            <option value="*">Todos</option>
+            <option value="Propuesto">Propuesto</option>
+            <option value="En Progreso">En Progreso</option>
+            <option value="Terminado">Terminado</option>
+        </select>
+    </div>
+   </form>
 </div>
 
-<% else %>
-<h1>No hay Resultados</h1>
+<!--
+<nav class="navbar navbar-light bg-light">
+ <a class="navbar-brand"></a>
+   <form class="form-inline">
+      <select class="form-select" name="search" id="">
+        <option value="">Todos</option>
+        <option value="Propuesto">Propuesto</option>
+        <option value="En Progreso">En Progreso</option>
+        <option value="Terminado">Terminado</option>
+      </select>
+      <button type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+   </form>
+</nav>
+-->
+<div id="gestors" class="table-responsive">
+    <table class="table table-hover table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Proyecto
+            <%= link_to new_gestor_path, style: "text-decoration: none;"  do %>  
+              &nbsp;<i class="fa-solid fa-circle-plus"></i>
+            <% end %>
+          </th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Fecha inicio</th>
+          <th scope="col">Fecha término</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Acción</th>
+        </tr>
+      </thead>
 
-<% end %>
+      <tbody>
+        <% if @gestors.count > 0 %>
+          <% @gestors.each do |gestor| %>
+            <tr>
+              <td scope="row"><%= gestor.nombre %></td>
+              <td scope="row"><%= gestor.descripcion %></td>
+              <td scope="row"><%= gestor.fechacom %></td>
+              <td scope="row"><%= gestor.fechater %></td>
+              <td scope="row"><%= gestor.estado %></td>
+              <td scope="row">
+                <%= link_to gestor, style: "text-decoration: none;" do %>
+                  <i class="fa-solid fa-eye text-success"></i>&nbsp;
+                <% end %>
+                <%= link_to edit_gestor_path(gestor), style: "text-decoration: none;" do %>
+                  <i class="fa-solid fa-pen-to-square text-warning"></i>&nbsp;
+                <% end %>
+                <%= button_to gestor, method: :delete, class: "btn", style: "text-decoration: none;", confirm: "¿Estás seguro?" do %>
+                  <i class="fa-solid fa-trash-can text-danger"></i>&nbsp;
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <% else %>
+          <h1>No hay Resultados</h1>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+  
 
-<%= link_to "New gestor", new_gestor_path %>
+<!--
 
 
 
-
+-->
