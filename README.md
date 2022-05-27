@@ -1,25 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Desafío: Módulo 8 - Gestor de Proyectos
 
-Things you may want to cover:
+* Aurtor: Juan Gutiérrez Ortega
 
-* Ruby version
+* GitHub: https://github.com/JPGcl/desafiogestor.git
 
-* System dependencies
+* Heroku PROD: https://safe-citadel-45373.herokuapp.com/gestors
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-Gestor de Proyectos
