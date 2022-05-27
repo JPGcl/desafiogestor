@@ -5,15 +5,14 @@
 <div>
   <td scope="row">
     <%= link_to gestors_path, style: "text-decoration: none;" do %>
-      <i class="fa-solid fa-reply text-info"></i>&nbsp;
+      &nbsp;<i class="fa-solid fa-reply text-info"></i>
     <% end %>
     <%= link_to edit_gestor_path(@gestor), style: "text-decoration: none;" do %>
-      <i class="fa-solid fa-pen-to-square text-warning"></i>&nbsp;
+      <i class="fa-solid fa-pen-to-square text-warning"></i>
     <% end %>
 
-    <%= button_to @gestor, method: :delete, class: "btn", style: "text-decoration: none;", confirm: "¿Estás seguro?" do %>
-      <i class="fa-solid fa-trash-can text-danger"></i>&nbsp;
+    <%= button_to @gestor, method: :delete, class: "btn" do %>
+      <i class="fa-solid fa-trash-can text-danger" style="text-decoration: none;"></i>
     <% end %>
   </td>
-
 </div>

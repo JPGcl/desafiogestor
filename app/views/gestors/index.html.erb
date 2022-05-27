@@ -32,8 +32,8 @@
 </nav>
 -->
 <div id="gestors" class="table-responsive">
-    <table class="table table-hover table-striped">
-      <thead class="thead-dark">
+    <table class="table table-sm table-hover table-striped table-dark">
+      <thead>
         <tr>
           <th scope="col">Proyecto
             <%= link_to new_gestor_path, style: "text-decoration: none;"  do %>  
@@ -44,7 +44,9 @@
           <th scope="col">Fecha inicio</th>
           <th scope="col">Fecha término</th>
           <th scope="col">Estado</th>
+          <th scope="col"></th>
           <th scope="col">Acción</th>
+          <th scope="col"></th>
         </tr>
       </thead>
 
@@ -57,29 +59,26 @@
               <td scope="row"><%= gestor.fechacom %></td>
               <td scope="row"><%= gestor.fechater %></td>
               <td scope="row"><%= gestor.estado %></td>
-              <td scope="row">
-                <%= link_to gestor, style: "text-decoration: none;" do %>
-                  <i class="fa-solid fa-eye text-success"></i>&nbsp;
+              <td scope="row" class="col-auto">
+                <%= link_to gestor, class: "btn" do %>
+                  <i class="fa-solid fa-eye text-success"></i>
                 <% end %>
-                <%= link_to edit_gestor_path(gestor), style: "text-decoration: none;" do %>
-                  <i class="fa-solid fa-pen-to-square text-warning"></i>&nbsp;
+              </td>
+              <td scope="row" class="col-auto">
+                <%= link_to edit_gestor_path(gestor), class: "btn" do %>
+                  <i class="fa-solid fa-pen-to-square text-warning"></i>
                 <% end %>
-                <%= button_to gestor, method: :delete, class: "btn", style: "text-decoration: none;", confirm: "¿Estás seguro?" do %>
-                  <i class="fa-solid fa-trash-can text-danger"></i>&nbsp;
+              </td>
+              <td scope="row" class="col-auto">
+                <%= button_to gestor, method: :delete, class: "btn" do %>
+                  <i class="fa-solid fa-trash-can text-danger" style="text-decoration: none;"></i>
                 <% end %>
               </td>
             </tr>
           <% end %>
         <% else %>
-          <h1>No hay Resultados</h1>
+          <h1>No hay resultados para el filtro.</h1>
         <% end %>
       </tbody>
     </table>
 </div>
-  
-
-<!--
-
-
-
--->
